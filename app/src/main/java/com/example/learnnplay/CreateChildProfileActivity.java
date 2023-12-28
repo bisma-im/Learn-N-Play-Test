@@ -8,22 +8,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class RegisterActivity extends AppCompatActivity {
-    EditText email, name, password;
+public class CreateChildProfileActivity extends AppCompatActivity {
+
+    EditText name, age;
     Button register;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        email = findViewById(R.id.editEmail);
+        setContentView(R.layout.activity_create_child_profile);
+
         name = findViewById(R.id.editName);
-        password= findViewById(R.id.editPassword);
-        register = findViewById(R.id.register);
+        age = findViewById(R.id.editAge);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, CreateChildProfileActivity.class);
+                Intent intent = new Intent(CreateChildProfileActivity.this, HomePage.class);
             }
         });
     }

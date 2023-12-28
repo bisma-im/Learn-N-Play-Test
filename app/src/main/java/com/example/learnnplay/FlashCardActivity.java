@@ -104,7 +104,9 @@ public class FlashCardActivity extends AppCompatActivity {
     }
 
     private void initializeFlashCards() {
-        flashCards = new ArrayList<>();        flashCards.add(new FlashCard(
+        flashCards = new ArrayList<>();
+
+        flashCards.add(new FlashCard(
                 "A",
                 new String[] {"Ant", "Apple", "Astronaut"},
                 new int[] {R.drawable.ant, R.drawable.apple, R.drawable.astronaut},
