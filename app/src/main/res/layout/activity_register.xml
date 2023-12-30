@@ -42,17 +42,6 @@
             android:hint="Email" />
 
         <EditText
-            android:id="@+id/editName"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/white"
-            android:layout_margin="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:inputType="text"
-            android:hint="Name" />
-
-        <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -70,6 +59,7 @@
             android:layout_margin="50dp"
             android:layout_gravity="center_horizontal"
             android:backgroundTint="#FFAB00"
+            android:textColor="@color/secondary_theme"
             android:fontFamily="@font/alfa_slab_one"
             android:text="Register" />
     </LinearLayout>

@@ -36,8 +36,20 @@ public class FlashCardActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check for incorrect letter
+                FlashCard flashCard = flashCards.get(currentFlashCardIndex);
+                if(editTextFirst.getText().toString().trim() != flashCard.letter ||
+                        editTextFirst.getText().toString().trim() != flashCard.letter.toLowerCase() ||
+                        editTextSecond.getText().toString().trim() != flashCard.letter ||
+                        editTextSecond.getText().toString().trim() != flashCard.letter.toLowerCase() ||
+                        editTextThird.getText().toString().trim() != flashCard.letter ||
+                        editTextThird.getText().toString().trim() != flashCard.letter.toLowerCase()){
+
+                    Toast.makeText(FlashCardActivity.this, "Please enter the correct letter", Toast.LENGTH_SHORT).show();
+
+                }
                 // Check if any of the EditText fields are empty
-                if (editTextFirst.getText().toString().trim().isEmpty() ||
+                else if (editTextFirst.getText().toString().trim().isEmpty() ||
                         editTextSecond.getText().toString().trim().isEmpty() ||
                         editTextThird.getText().toString().trim().isEmpty()) {
 

@@ -20,11 +20,13 @@ public class CreateChildProfileActivity extends AppCompatActivity {
 
         name = findViewById(R.id.editName);
         age = findViewById(R.id.editAge);
+        MyDBHelper dbHelper = new MyDBHelper(this);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateChildProfileActivity.this, HomePage.class);
+                dbHelper.addChild(name.getText().toString(), Integer.parseInt(age.getText().toString()));
+                Intent intent = new Intent(CreateChildProfileActivity.this, FlashCardActivity.class);
             }
         });
     }

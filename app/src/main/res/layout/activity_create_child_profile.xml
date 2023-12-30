@@ -57,6 +57,7 @@
             android:layout_marginRight="10dp"
             android:fontFamily="@font/alfa_slab_one"
             android:textColor="@color/secondary_theme"
+            android:textSize="15sp"
             android:text="Name" />
 
         <EditText
@@ -80,6 +81,7 @@
             android:layout_marginRight="10dp"
             android:fontFamily="@font/alfa_slab_one"
             android:textColor="@color/secondary_theme"
+            android:textSize="15sp"
             android:text="Age" />
 
         <EditText
