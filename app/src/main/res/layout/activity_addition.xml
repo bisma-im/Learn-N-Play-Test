@@ -100,13 +100,13 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:textSize="27sp"
-                android:textColor="@color/secondary_theme"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/alfa_slab_one"
                 android:gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center_horizontal"
-                android:text="=" />
+                android:text="="
+                android:textColor="@color/secondary_theme"
+                android:textSize="27sp" />
             <EditText
                 android:id="@+id/answer1"
                 android:layout_width="48dp"

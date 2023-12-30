@@ -8,10 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateChildProfileActivity extends AppCompatActivity {
 
+    List<ChildUser> childUsers = new ArrayList<>();
     EditText name, age;
     Button register;
+    public static String currentChildName;
+    MyDBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,13 +26,20 @@ public class CreateChildProfileActivity extends AppCompatActivity {
 
         name = findViewById(R.id.editName);
         age = findViewById(R.id.editAge);
-        MyDBHelper dbHelper = new MyDBHelper(this);
+        register = findViewById(R.id.register);
+        dbHelper = new MyDBHelper(this);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbHelper.addChild(name.getText().toString(), Integer.parseInt(age.getText().toString()));
-                Intent intent = new Intent(CreateChildProfileActivity.this, FlashCardActivity.class);
+                currentChildName = name.getText().toString();
+                int childAge;
+                childAge = Integer.parseInt(age.getText().toString());
+                ChildUser childUser = new ChildUser(currentChildName, childAge, 0);
+                childUsers.add(childUser);
+                dbHelper.addChild(currentChildName, childAge);
+                Intent intent = new Intent(CreateChildProfileActivity.this, QuizActivity.class);
+                intent.putExtra("ChildName", currentChildName);
                 startActivity(intent);
             }
         });
