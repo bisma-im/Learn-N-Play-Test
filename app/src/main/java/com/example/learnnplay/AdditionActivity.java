@@ -37,5 +37,12 @@ public class AdditionActivity extends AppCompatActivity {
                 }
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdditionActivity.this, NumberCountActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
