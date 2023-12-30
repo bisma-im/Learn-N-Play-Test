@@ -39,15 +39,19 @@ public class FlashCardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Check for incorrect letter
                 FlashCard flashCard = flashCards.get(currentFlashCardIndex);
-                if(editTextFirst.getText().toString().trim() != flashCard.letter ||
-                        editTextFirst.getText().toString().trim() != flashCard.letter.toLowerCase() ||
-                        editTextSecond.getText().toString().trim() != flashCard.letter ||
-                        editTextSecond.getText().toString().trim() != flashCard.letter.toLowerCase() ||
-                        editTextThird.getText().toString().trim() != flashCard.letter ||
-                        editTextThird.getText().toString().trim() != flashCard.letter.toLowerCase()){
+                if((editTextFirst.getText().toString().trim().equals(flashCard.letter) ||
+                        editTextFirst.getText().toString().trim().equals(flashCard.letter.toLowerCase())) &&
+                        (editTextSecond.getText().toString().trim().equals(flashCard.letter) ||
+                        editTextSecond.getText().toString().trim().equals(flashCard.letter.toLowerCase())) &&
+                        (editTextThird.getText().toString().trim().equals(flashCard.letter) ||
+                        editTextThird.getText().toString().trim().equals(flashCard.letter.toLowerCase()))){
 
-                    Toast.makeText(FlashCardActivity.this, "Please enter the correct letter", Toast.LENGTH_SHORT).show();
-
+                    // All fields are filled, proceed to the next flash card
+                    currentFlashCardIndex++;
+                    if (currentFlashCardIndex >= flashCards.size()) {
+                        currentFlashCardIndex = 0; // Loop back to the first card
+                    }
+                    loadFlashCard(currentFlashCardIndex);
                 }
                 // Check if any of the EditText fields are empty
                 else if (editTextFirst.getText().toString().trim().isEmpty() ||
@@ -57,12 +61,7 @@ public class FlashCardActivity extends AppCompatActivity {
                     // Show a toast message if any field is empty
                     Toast.makeText(FlashCardActivity.this, "Please enter the first letter(s)", Toast.LENGTH_SHORT).show();
                 } else {
-                    // All fields are filled, proceed to the next flash card
-                    currentFlashCardIndex++;
-                    if (currentFlashCardIndex >= flashCards.size()) {
-                        currentFlashCardIndex = 0; // Loop back to the first card
-                    }
-                    loadFlashCard(currentFlashCardIndex);
+                    Toast.makeText(FlashCardActivity.this, "Please enter the correct letter", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -27,13 +27,14 @@ public class AdditionActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(answer1.getText().toString() != "4" || answer2.getText().toString() != "10"
-                        || answer3.getText().toString() != "5" || answer4.getText().toString() != "2"){
-                    Toast.makeText(AdditionActivity.this, "Enter the correct answer", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if(answer1.getText().toString().equals("4")  && answer2.getText().toString().equals("10")
+                        && answer3.getText().toString().equals("5")  && answer4.getText().toString().equals("2")){
                     //Intent intent = new Intent(AdditionActivity.this, AdditionActivity.class);
                     //startActivity(intent);
+                    Toast.makeText(AdditionActivity.this, "correct answer!", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(AdditionActivity.this, "Enter the correct answer", Toast.LENGTH_SHORT).show();
                 }
             }
         });

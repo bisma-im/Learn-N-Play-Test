@@ -28,13 +28,13 @@ public class NumberCountActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(answer1.getText().toString() != "5" || answer2.getText().toString() != "10"
-                || answer3.getText().toString() != "3" || answer4.getText().toString() != "1"){
-                    Toast.makeText(NumberCountActivity.this, "Enter the correct answer", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                if(answer1.getText().toString().equals("5")  && answer2.getText().toString().equals("10")
+                && answer3.getText().toString().equals("3")  && answer4.getText().toString().equals("1")){
                     Intent intent = new Intent(NumberCountActivity.this, AdditionActivity.class);
                     startActivity(intent);
+                }
+                else {
+                    Toast.makeText(NumberCountActivity.this, "Enter the correct answer", Toast.LENGTH_SHORT).show();
                 }
             }
         });
