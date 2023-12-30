@@ -2,6 +2,7 @@ package com.example.learnnplay;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,7 +23,7 @@ public class FlashCardActivity extends AppCompatActivity {
     private ImageButton imageButtonFirst, imageButtonSecond, imageButtonThird;
     private EditText editTextFirst, editTextSecond, editTextThird;
     private TextView textViewFirst, textViewSecond, textViewThird;
-    private Button nextButton;
+    private Button nextButton, backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,13 @@ public class FlashCardActivity extends AppCompatActivity {
                     }
                     loadFlashCard(currentFlashCardIndex);
                 }
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(FlashCardActivity.this, HomePage.class);
+//                startActivity(intent);
             }
         });
 

@@ -20,10 +20,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String KEY_CHILD_AGE ="age";
     public static final String KEY_SCORE ="score";
 
-
-
-
-
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
