@@ -27,6 +27,7 @@ public class CreateChildProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dbHelper.addChild(name.getText().toString(), Integer.parseInt(age.getText().toString()));
                 Intent intent = new Intent(CreateChildProfileActivity.this, FlashCardActivity.class);
+                startActivity(intent);
             }
         });
     }

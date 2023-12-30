@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 dbHelper.addParent(email.getText().toString(), password.getText().toString());
                 Intent intent = new Intent(RegisterActivity.this, CreateChildProfileActivity.class);
+                startActivity(intent);
             }
         });
     }
