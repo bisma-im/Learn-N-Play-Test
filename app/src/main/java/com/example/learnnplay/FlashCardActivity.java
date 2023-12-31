@@ -68,8 +68,8 @@ public class FlashCardActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(FlashCardActivity.this, HomePage.class);
-//                startActivity(intent);
+                Intent intent = new Intent(FlashCardActivity.this, NumberCountActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -166,5 +166,6 @@ public class FlashCardActivity extends AppCompatActivity {
         textViewSecond = findViewById(R.id.secondObjTextView);
         textViewThird = findViewById(R.id.thirdObjTextView);
         nextButton = findViewById(R.id.next);
+        backButton = findViewById(R.id.back);
     }
 }

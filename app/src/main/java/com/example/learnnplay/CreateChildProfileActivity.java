@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +35,27 @@ public class CreateChildProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 currentChildName = name.getText().toString();
-                int childAge;
-                childAge = Integer.parseInt(age.getText().toString());
-                ChildUser childUser = new ChildUser(currentChildName, childAge, 0);
-                childUsers.add(childUser);
-                dbHelper.addChild(currentChildName, childAge);
-                Intent intent = new Intent(CreateChildProfileActivity.this, QuizActivity.class);
-                intent.putExtra("ChildName", currentChildName);
-                startActivity(intent);
+
+                if (currentChildName.isEmpty() || age.getText().toString().isEmpty()) {
+                    Toast.makeText(CreateChildProfileActivity.this,"Enter all fields", Toast.LENGTH_SHORT).show();
+                }
+
+                getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+                        .putString("childName", currentChildName).apply();
+
+                try {
+                    int childAge = Integer.parseInt(age.getText().toString());
+                    ChildUser childUser = new ChildUser(name.getText().toString(), childAge, 0);
+                    childUsers.add(childUser);
+                    dbHelper.addChild(name.getText().toString(), childAge);
+
+                    Intent intent = new Intent(CreateChildProfileActivity.this, FlashCardActivity.class);
+                    startActivity(intent);
+                } catch (NumberFormatException e) {
+                    return;
+                }
             }
         });
+
     }
 }

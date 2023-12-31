@@ -24,7 +24,6 @@ public class QuizActivity extends AppCompatActivity {
     private Button restartButton;
     private TextView scoreTextView;
     MyDBHelper dbHelper;
-
     private String[] questions = {"question1", "question2", "question3", "question4", "question5"};
     private int[] questionImages = {R.drawable.hexagon, R.drawable.yellow, R.drawable.number1, R.drawable.a, R.drawable.shape_triangle};
     private String[] correctAnswers = {"HexaGon", "yellow Color", "11", "Apple", "Triangle"};
@@ -32,7 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     private int currentQuestionIndex = 0;
     private int score = 0;
     private Button backButton;
-    private Button appsettingbtn;
+    private Button appSettingBtn;
 
     private CountDownTimer timer;
     private long timeLeftInMillis = 20000; // 20 seconds
@@ -52,10 +51,11 @@ public class QuizActivity extends AppCompatActivity {
         restartButton = findViewById(R.id.restartBtn);
         scoreTextView = findViewById(R.id.scoreTextView);
         backButton = findViewById(R.id.backbutton);
-        appsettingbtn=findViewById(R.id.buttonsett);
+        appSettingBtn=findViewById(R.id.buttonsett);
         dbHelper = new MyDBHelper(this);
-        childName = CreateChildProfileActivity.currentChildName;
-        appsettingbtn.setOnClickListener(new View.OnClickListener() {
+        childName = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getString("childName",null);
+        appSettingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(QuizActivity.this,AppSetting.class));
@@ -65,7 +65,7 @@ public class QuizActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(QuizActivity.this, HomeScreen.class));
+                startActivity(new Intent(QuizActivity.this, AppSetting.class));
             }
         });
         // Initialize MediaPlayer
@@ -133,10 +133,6 @@ public class QuizActivity extends AppCompatActivity {
 
     private void updateScore() {
         scoreTextView.setText("Score: " + score);
-        scoreTextView.setText("Score: " + score);
-        if (childName != null) {
-            dbHelper.updateScore(childName, score);
-        }
     }
 
     private void showResults() {
@@ -146,6 +142,9 @@ public class QuizActivity extends AppCompatActivity {
 
         String resultMessage = "Your score is: " + score + " out of " + questions.length;
         Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
+        if (childName != null) {
+            dbHelper.updateScore(childName, score);
+        }
 
         // Show restart button
         restartButton.setVisibility(View.VISIBLE);

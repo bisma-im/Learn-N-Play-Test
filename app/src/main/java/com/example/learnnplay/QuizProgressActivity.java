@@ -15,14 +15,16 @@ public class QuizProgressActivity extends AppCompatActivity {
         scoreTextView = findViewById(R.id.score);
 
         MyDBHelper dbHelper = new MyDBHelper(this);
-        String childName = CreateChildProfileActivity.currentChildName;
+        String childName = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                .getString("childName",null);
 
         if (childName != null) {
             int score = dbHelper.getScore(childName);
             scoreTextView.setText(String.valueOf(score));
         } else {
-            // Handle the case where childName is null
             Log.e("QuizProgressActivity", "Child name is null");
         }
     }
 }
+
+
